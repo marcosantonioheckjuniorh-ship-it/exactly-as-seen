@@ -56,10 +56,42 @@ export function guardPath(path: Path, s: FunnelState): Path | null {
 }
 export function questionProgress(path: string) { const index = steps.indexOf(path as typeof steps[number]); return index >= 2 && index <= 6 ? { step: index - 1, percent: (index - 1) * 20 } : null; }
 export const OFFER_CONFIG = {
-  main: { name:'Oferta principal', price: null as number | null, benefits:['Resumo personalizado das suas respostas', 'Visão organizada do seu objetivo', 'Continuidade opcional, sem compromisso'] },
-  upsell1: { name:'Oferta complementar 1', price:null as number | null, benefits:['Complemento opcional da demonstração', 'Incluído no resumo somente se você aceitar'] },
-  upsell2: { name:'Oferta complementar 2', price:null as number | null, benefits:['Uma segunda opção complementar', 'Você decide se deseja adicionar'] },
-  downsell: { name:'Alternativa simplificada', price:null as number | null, benefits:['Uma opção mais simples', 'Recusar não interrompe sua jornada'] },
+  main: {
+    name:'Simulação de limite',
+    price:null as number | null,
+    benefits:[
+      'Limite ilustrativo de R$ 75.000,00',
+      'Resumo personalizado das informações fornecidas',
+      'Jornada demonstrativa com atendimento antes do checkout',
+    ],
+  },
+  upsell1: {
+    name:'Proteção demonstrativa',
+    price:9.90,
+    benefits:[
+      'Cobertura apresentada apenas como exemplo',
+      'Aceite opcional dentro da demonstração',
+      'Nenhuma apólice ou contratação é gerada',
+    ],
+  },
+  upsell2: {
+    name:'Formalização demonstrativa',
+    price:30,
+    benefits:[
+      'Etapa ilustrativa de formalização',
+      'Valor usado somente para reproduzir a referência visual',
+      'Nenhum contrato financeiro é criado',
+    ],
+  },
+  downsell: {
+    name:'Abertura demonstrativa',
+    price:37,
+    benefits:[
+      'Alternativa ilustrativa caso você recuse uma etapa anterior',
+      'Sem cobrança ou contratação real',
+      'Pode ser recusada sem interromper a demonstração',
+    ],
+  },
 };
 export function selectedItems(s: FunnelState) { return [OFFER_CONFIG.main, ...(s.upsell1.accepted ? [OFFER_CONFIG.upsell1]:[]), ...(s.upsell2.accepted ? [OFFER_CONFIG.upsell2]:[]), ...(s.downsell.accepted ? [OFFER_CONFIG.downsell]:[])]; }
 export function totalPrice(items: {price:number|null}[]) { return items.some(i => i.price === null) ? null : items.reduce((sum,i) => sum + (i.price ?? 0),0); }
