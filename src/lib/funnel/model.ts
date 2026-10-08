@@ -7,7 +7,7 @@ export const steps = ['/', '/start', '/name', '/birth-date', '/objective', '/inc
 export type Path = typeof steps[number] | '/edit-data' | '/privacy' | '/terms' | '/admin' | '/assistant-offer';
 export function validBirthDate(value: string) {
   if (!/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return false;
-  const [day, month, year] = value.split('/').map(Number);
+  const [day = 0, month = 0, year = 0] = value.split('/').map(Number);
   const d = new Date(year, month - 1, day);
   return year >= 1900 && d.getFullYear() === year && d.getMonth() === month - 1 && d.getDate() === day && d <= new Date();
 }
