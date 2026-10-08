@@ -59,6 +59,7 @@ export const OFFER_CONFIG = {
   main: {
     name:'Simulação de crédito pessoal',
     price:null as number | null,
+    displayAmount:'R$ 75.000,00',
     benefits:[
       'Valor apresentado na referência: R$ 75.000,00',
       'Resumo personalizado das informações fornecidas',
