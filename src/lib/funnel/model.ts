@@ -1,7 +1,7 @@
 import { z } from 'zod';
 export const STORAGE_KEY = 'financial_demo_funnel';
-export const objectives = ['Organizar minha vida financeira', 'Encontrar uma solução adequada', 'Melhorar meu planejamento', 'Conhecer minhas opções'] as const;
-export const incomes = ['Até R$ 1.500', 'R$ 1.501 a R$ 3.000', 'R$ 3.001 a R$ 5.000', 'R$ 5.001 a R$ 10.000', 'Acima de R$ 10.000'] as const;
+export const objectives = ['Organizar minha vida financeira', 'Consolidar dívidas', 'Emergência familiar', 'Meu negócio', 'Reformar minha casa', 'Compras', 'Outros motivos'] as const;
+export const incomes = ['Menos de R$ 1.500', 'R$ 1.500 – R$ 3.000', 'R$ 3.000 – R$ 5.000', 'R$ 5.000 – R$ 10.000', 'Mais de R$ 10.000'] as const;
 export const professions = ['CLT', 'Autônomo', 'Empresário', 'Freelancer', 'Estudante', 'Outro'] as const;
 export const steps = ['/', '/start', '/name', '/birth-date', '/objective', '/income', '/professional-status', '/analysis', '/result', '/assistant', '/confirmation', '/mechanism', '/offer', '/offer-chat', '/final-confirmation', '/checkout', '/upsell-1', '/upsell-2', '/downsell', '/final-offer', '/success'] as const;
 export type Path = typeof steps[number] | '/edit-data' | '/privacy' | '/terms' | '/admin' | '/assistant-offer';
@@ -57,16 +57,16 @@ export function guardPath(path: Path, s: FunnelState): Path | null {
 export function questionProgress(path: string) { const index = steps.indexOf(path as typeof steps[number]); return index >= 2 && index <= 6 ? { step: index - 1, percent: (index - 1) * 20 } : null; }
 export const OFFER_CONFIG = {
   main: {
-    name:'Simulação de limite',
+    name:'Simulação de crédito pessoal',
     price:null as number | null,
     benefits:[
-      'Limite ilustrativo de R$ 75.000,00',
+      'Valor apresentado na referência: R$ 75.000,00',
       'Resumo personalizado das informações fornecidas',
-      'Jornada demonstrativa com atendimento antes do checkout',
+      'Atendimento demonstrativo antes da etapa de pagamento',
     ],
   },
   upsell1: {
-    name:'Proteção demonstrativa',
+    name:'Seguro de proteção — demonstração',
     price:9.90,
     benefits:[
       'Cobertura apresentada apenas como exemplo',
@@ -75,7 +75,7 @@ export const OFFER_CONFIG = {
     ],
   },
   upsell2: {
-    name:'Formalização demonstrativa',
+    name:'Comissão de formalização — demonstração',
     price:30,
     benefits:[
       'Etapa ilustrativa de formalização',
@@ -84,7 +84,7 @@ export const OFFER_CONFIG = {
     ],
   },
   downsell: {
-    name:'Abertura demonstrativa',
+    name:'Comissão de abertura — demonstração',
     price:37,
     benefits:[
       'Alternativa ilustrativa caso você recuse uma etapa anterior',
