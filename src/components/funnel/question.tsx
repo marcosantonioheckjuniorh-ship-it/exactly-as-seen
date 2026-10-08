@@ -9,9 +9,9 @@ import { PageIntro, Primary, DemoNotice } from './layout';
 const questions = {
  '/name': { field:'name',title:'Como podemos chamar você?',description:'Vamos começar pelo seu nome.',label:'Nome completo',placeholder:'Digite seu nome',icon:UserRound,next:'/birth-date',event:'name_completed' },
  '/birth-date': { field:'birthDate',title:'Qual é a sua data de nascimento?',description:'Esta informação faz parte da sua demonstração.',label:'Data de nascimento',placeholder:'DD/MM/AAAA',icon:CalendarDays,next:'/objective',event:'birth_date_completed' },
- '/objective':{field:'objective',title:'Qual é o seu principal objetivo?',description:'Selecione a opção que mais combina com o seu momento.',label:'Objetivo',options:objectives,icon:Target,next:'/income',event:'objective_selected'},
- '/income':{field:'incomeRange',title:'Qual é aproximadamente sua renda mensal?',description:'Uma faixa aproximada é suficiente.',label:'Renda mensal',options:incomes,icon:Wallet,next:'/professional-status',event:'income_selected'},
- '/professional-status':{field:'professionalStatus',title:'Qual é a sua situação profissional?',description:'Escolha sua situação atual.',label:'Situação profissional',options:professions,icon:BriefcaseBusiness,next:'/analysis',event:'professional_status_selected'},
+ '/objective':{field:'objective',title:'Qual é o objetivo da simulação?',description:'Selecione a opção que mais combina com o seu momento.',label:'Objetivo',options:objectives,icon:Target,next:'/income',event:'objective_selected'},
+ '/income':{field:'incomeRange',title:'Qual é aproximadamente o seu rendimento mensal?',description:'Uma faixa aproximada é suficiente.',label:'Renda mensal',options:incomes,icon:Wallet,next:'/professional-status',event:'income_selected'},
+ '/professional-status':{field:'professionalStatus',title:'Qual é a sua situação profissional?',description:'Escolha a situação usada nesta demonstração.',label:'Situação profissional',options:professions,icon:BriefcaseBusiness,next:'/analysis',event:'professional_status_selected'},
 } as const;
 export type QuestionPath=keyof typeof questions;
 export function QuestionPage({path}:{path:QuestionPath}) {
