@@ -22,6 +22,7 @@ import { Route as EditDataRouteImport } from './routes/edit-data'
 import { Route as FinalConfirmationRouteImport } from './routes/final-confirmation'
 import { Route as FinalOfferRouteImport } from './routes/final-offer'
 import { Route as IncomeRouteImport } from './routes/income'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MechanismRouteImport } from './routes/mechanism'
 import { Route as NameRouteImport } from './routes/name'
 import { Route as ObjectiveRouteImport } from './routes/objective'
@@ -35,6 +36,7 @@ import { Route as SuccessRouteImport } from './routes/success'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as Upsell1RouteImport } from './routes/upsell-1'
 import { Route as Upsell2RouteImport } from './routes/upsell-2'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -99,6 +101,11 @@ const FinalOfferRoute = FinalOfferRouteImport.update({
 const IncomeRoute = IncomeRouteImport.update({
   id: '/income',
   path: '/income',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MechanismRoute = MechanismRouteImport.update({
@@ -166,6 +173,12 @@ const Upsell2Route = Upsell2RouteImport.update({
   path: '/upsell-2',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -181,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/final-confirmation': typeof FinalConfirmationRoute
   '/final-offer': typeof FinalOfferRoute
   '/income': typeof IncomeRoute
+  '/mcp': typeof McpRoute
   '/mechanism': typeof MechanismRoute
   '/name': typeof NameRoute
   '/objective': typeof ObjectiveRoute
@@ -194,6 +208,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -209,6 +224,7 @@ export interface FileRoutesByTo {
   '/final-confirmation': typeof FinalConfirmationRoute
   '/final-offer': typeof FinalOfferRoute
   '/income': typeof IncomeRoute
+  '/mcp': typeof McpRoute
   '/mechanism': typeof MechanismRoute
   '/name': typeof NameRoute
   '/objective': typeof ObjectiveRoute
@@ -222,6 +238,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -238,6 +255,7 @@ export interface FileRoutesById {
   '/final-confirmation': typeof FinalConfirmationRoute
   '/final-offer': typeof FinalOfferRoute
   '/income': typeof IncomeRoute
+  '/mcp': typeof McpRoute
   '/mechanism': typeof MechanismRoute
   '/name': typeof NameRoute
   '/objective': typeof ObjectiveRoute
@@ -251,6 +269,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -268,6 +287,7 @@ export interface FileRouteTypes {
     | '/final-confirmation'
     | '/final-offer'
     | '/income'
+    | '/mcp'
     | '/mechanism'
     | '/name'
     | '/objective'
@@ -281,6 +301,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/upsell-1'
     | '/upsell-2'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -296,6 +317,7 @@ export interface FileRouteTypes {
     | '/final-confirmation'
     | '/final-offer'
     | '/income'
+    | '/mcp'
     | '/mechanism'
     | '/name'
     | '/objective'
@@ -309,6 +331,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/upsell-1'
     | '/upsell-2'
+    | '/.well-known/oauth-protected-resource'
   id:
     | '__root__'
     | '/'
@@ -324,6 +347,7 @@ export interface FileRouteTypes {
     | '/final-confirmation'
     | '/final-offer'
     | '/income'
+    | '/mcp'
     | '/mechanism'
     | '/name'
     | '/objective'
@@ -337,6 +361,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/upsell-1'
     | '/upsell-2'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -353,6 +378,7 @@ export interface RootRouteChildren {
   FinalConfirmationRoute: typeof FinalConfirmationRoute
   FinalOfferRoute: typeof FinalOfferRoute
   IncomeRoute: typeof IncomeRoute
+  McpRoute: typeof McpRoute
   MechanismRoute: typeof MechanismRoute
   NameRoute: typeof NameRoute
   ObjectiveRoute: typeof ObjectiveRoute
@@ -366,6 +392,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   Upsell1Route: typeof Upsell1Route
   Upsell2Route: typeof Upsell2Route
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -461,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IncomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mechanism': {
       id: '/mechanism'
       path: '/mechanism'
@@ -552,6 +586,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Upsell2RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -569,6 +610,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinalConfirmationRoute: FinalConfirmationRoute,
   FinalOfferRoute: FinalOfferRoute,
   IncomeRoute: IncomeRoute,
+  McpRoute: McpRoute,
   MechanismRoute: MechanismRoute,
   NameRoute: NameRoute,
   ObjectiveRoute: ObjectiveRoute,
@@ -582,6 +624,8 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   Upsell1Route: Upsell1Route,
   Upsell2Route: Upsell2Route,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
