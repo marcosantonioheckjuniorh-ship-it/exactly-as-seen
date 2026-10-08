@@ -7,7 +7,7 @@ import type { ReactNode } from 'react';
 export function FunnelLayout({children}:{children:ReactNode}) {
  const {state,ready,storageError}=useFunnel(); const {pathname}=useLocation(); const navigate=useNavigate(); const q=questionProgress(pathname);
  const current=steps.indexOf(pathname as typeof steps[number]);
- const back:Path = pathname==='/offer-chat'?'/offer':pathname==='/checkout'?'/offer-chat':pathname==='/edit-data'? state.returnTo ?? '/assistant':steps[Math.max(0,current-1)];
+ const back:Path = pathname==='/offer-chat'?'/offer':pathname==='/checkout'?'/offer-chat':pathname==='/edit-data'? state.returnTo ?? '/assistant':(steps[Math.max(0,current-1)] ?? '/');
  return <div className="min-h-screen bg-background">
   <header className="site-header"><div className="header-inner"><Link to="/" className="brand" aria-label="Jornada Demo — início"><span className="brand-symbol"><Compass size={23}/></span><span>jornada<span className="brand-dot">.</span></span></Link><span className="demo-tag">DEMONSTRAÇÃO <span className="hidden sm:inline">INDEPENDENTE</span></span><Button asChild variant="ghost" size="icon" aria-label="Privacidade"><Link to="/privacy"><ShieldCheck size={19}/></Link></Button></div></header>
   <main className={`funnel-main ${pathname==='/admin'?'admin-main':''}`}>
